@@ -1,4 +1,6 @@
 class Filer < ApplicationRecord
+  validates :ein, uniqueness: { scope: [:name, :zip] }
+
   has_many :filings
   has_many :grantmaker_filers, foreign_key: :grantmaker_id, class_name: 'Award'
   has_many :grantmakers, through: :grantmaker_filers

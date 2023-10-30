@@ -50,13 +50,13 @@ class ImportFilingService < BaseService
           # ex. unprocessable award entry --> {"PurposeOfGrantTxt"=>"General Support"}
           next if a.keys.length == 1
 
-          # search by ein, then search by name + address match
+          # search by ein, then search by name + zip match if no ein
           if a["RecipientEIN"]
             recipient = Filer.find_or_initialize_by(ein: a["RecipientEIN"])
           else 
             recipient = Filer.find_or_initialize_by(
               name: Filing.parse_filer_name(a, true),
-              address: Filing.parse_filer_address(a)[0]
+              zip: Filing.parse_filer_address(a)[3],
             )
           end
         end
@@ -81,6 +81,8 @@ class ImportFilingService < BaseService
   def persist_filer(filer, data, is_recipient)
     filer.name = Filing.parse_filer_name(data, is_recipient)
     address = Filing.parse_filer_address(data)
+    # assign a blank ein to enforce model scope validation
+    filer.ein = "" if filer.ein == nil
     filer.address = address[0]
     filer.city = address[1] 
     filer.state = address[2] 

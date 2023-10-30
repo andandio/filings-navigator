@@ -1,19 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Box,
   Card,
   CardActions,
   CardContent,
   Button,
-  Typography
-
-} from '@mui/material';
+  Typography,
+} from "@mui/material";
 
 const styles = {
   container: {
     padding: "8rem",
   },
-}
+};
 
 const Summary = () => {
   return (
@@ -22,7 +21,7 @@ const Summary = () => {
       <Card></Card>
       <Card></Card>
     </Box>
-  )
-}
+  );
+};
 
-export default Summary
+export default Summary;
