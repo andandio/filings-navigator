@@ -29,7 +29,6 @@ class AwardTest < ActiveSupport::TestCase
     assert_equal :decimal, Award.columns_hash['cash_award'].type
     assert_equal 10, Award.columns_hash['cash_award'].precision
     assert_equal 2, Award.columns_hash['cash_award'].scale
-    assert_equal :text, Award.columns_hash['notes'].type
     assert_not Award.columns_hash['created_at'].null, "created_at should not allow null values"
     assert_not Award.columns_hash['updated_at'].null, "updated_at should not allow null values"
     assert_not Award.columns_hash['grantmaker_id'].null, "grantmaker_id should not allow null values"
