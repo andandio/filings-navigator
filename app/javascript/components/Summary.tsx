@@ -38,7 +38,7 @@ const Summary = () => {
           return k.split("-")[0];
         });
         setYears(allYears);
-        const allSums = Object.values(data).map((sum) => parseFloat(sum));
+        const allSums = Object.values(data).map((sum:string) => parseFloat(sum));
         setTotalAwardDollars(allSums);
       })
       .catch(function (error) {
