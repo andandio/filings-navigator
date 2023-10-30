@@ -1,5 +1,8 @@
 # README
 
+## View the demo
+[andandio-filings-navigator](https://andandio-filings-navigator-3d9f051c6fad.herokuapp.com/)
+
 ## Installation
 
 - `bundle install`
