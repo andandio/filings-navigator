@@ -54,11 +54,9 @@ class ImportFilingService < BaseService
           if a["RecipientEIN"]
             recipient = Filer.find_or_initialize_by(ein: a["RecipientEIN"])
           else 
-            # assign a blank ein to enforce model scope validation
             recipient = Filer.find_or_initialize_by(
               name: Filing.parse_filer_name(a, true),
               zip: Filing.parse_filer_address(a)[3],
-              ein: ""
             )
           end
         end
@@ -83,6 +81,8 @@ class ImportFilingService < BaseService
   def persist_filer(filer, data, is_recipient)
     filer.name = Filing.parse_filer_name(data, is_recipient)
     address = Filing.parse_filer_address(data)
+    # assign a blank ein to enforce model scope validation
+    filer.ein = "" if filer.ein == nil
     filer.address = address[0]
     filer.city = address[1] 
     filer.state = address[2] 
