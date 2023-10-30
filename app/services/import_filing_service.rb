@@ -50,13 +50,15 @@ class ImportFilingService < BaseService
           # ex. unprocessable award entry --> {"PurposeOfGrantTxt"=>"General Support"}
           next if a.keys.length == 1
 
-          # search by ein, then search by name + address match
+          # search by ein, then search by name + zip match if no ein
           if a["RecipientEIN"]
             recipient = Filer.find_or_initialize_by(ein: a["RecipientEIN"])
           else 
+            # assign a blank ein to enforce model scope validation
             recipient = Filer.find_or_initialize_by(
               name: Filing.parse_filer_name(a, true),
-              address: Filing.parse_filer_address(a)[0]
+              zip: Filing.parse_filer_address(a)[3],
+              ein: ""
             )
           end
         end

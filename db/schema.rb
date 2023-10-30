@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_23_234614) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_30_171916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_234614) do
     t.string "city"
     t.string "state"
     t.string "zip"
+    t.index ["ein", "name", "zip"], name: "index_filers_on_ein_and_name_and_zip", unique: true
   end
 
   create_table "filings", force: :cascade do |t|

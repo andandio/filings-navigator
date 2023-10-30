@@ -3,6 +3,6 @@ class Award < ApplicationRecord
   belongs_to :recipient, class_name: "Filer", optional: true
   belongs_to :filing
 
-  validates :grantmaker, presence: true
-  validates :filing, presence: :true
+  validates :grantmaker_id, presence: true
+  validates :filing_id, presence: :true
 end

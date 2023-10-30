@@ -1,7 +1,7 @@
 class Filing < ApplicationRecord
   include IrsParsable
 
-  validates :filer, presence: true
+  validates :filer_id, presence: true
   validates :tax_period_end_at, presence: true
 
   belongs_to :filer
