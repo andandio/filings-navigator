@@ -18,6 +18,18 @@ class Api::AwardsController < ApplicationController
     }
   end
 
+  def historical_snapshot
+    award_data = Award.joins(:filing)
+                      .group('filings.tax_period_end_at')
+                      .sum('awards.cash_award')
+
+    render json: {
+      success: true,
+      message: '',
+      data: award_data
+    }
+  end
+
   private
 
   def filtered_params

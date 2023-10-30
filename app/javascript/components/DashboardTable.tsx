@@ -77,7 +77,7 @@ const DashboardTable = () => {
 
   const populateTable = (tableData: responseData) => {
     const data = tableData.data;
-    const headers = Object.keys(tableData.data[0]);
+    const headers = Object.keys(tableData.data[0]).filter((d)=> d !== "filing_years");
     setTableHeaders(headers);
     setDisplayData(data);
   };

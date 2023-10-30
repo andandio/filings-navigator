@@ -18,6 +18,9 @@ const styles = {
         background: "rgb(242, 111, 99)",
       },
     },
+    ["@media (max-width:780px)"]: {
+      overflowX: "auto"
+    }
   },
   tableCard: {
     padding: "1.5rem",
