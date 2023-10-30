@@ -11,12 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_10_23_234614) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "awards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "grantmaker_id", null: false
-    t.integer "recipient_id"
-    t.integer "filing_id", null: false
+    t.bigint "grantmaker_id", null: false
+    t.bigint "recipient_id"
+    t.bigint "filing_id", null: false
     t.text "purpose"
     t.decimal "cash_award", precision: 10, scale: 2
     t.text "notes"
@@ -37,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_234614) do
   create_table "filings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "filer_id", null: false
+    t.bigint "filer_id", null: false
     t.boolean "amended_indicator"
     t.datetime "filed_at"
     t.string "tax_period_end_at"
