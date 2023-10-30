@@ -3,11 +3,12 @@
 ## Installation
 
 - `bundle install`
+- `npm install`
 
 ## Prepare DB
 
 - `rake db:migrate`
-- **_ TODO _**
+- `rake db:seed`
 
 ## Running the server
 
