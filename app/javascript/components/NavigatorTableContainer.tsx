@@ -1,12 +1,6 @@
-import * as React from 'react';
-import { ReactElement, useState } from 'react';
-import {
-  Box,
-  TableContainer,
-  Paper,
-  Card,
-  Typography,
-} from '@mui/material';
+import * as React from "react";
+import { ReactElement, useState } from "react";
+import { Box, TableContainer, Paper, Card, Typography } from "@mui/material";
 
 const styles = {
   buttons: {
@@ -22,34 +16,35 @@ const styles = {
       "&:hover": {
         color: "white",
         background: "rgb(242, 111, 99)",
-      }
-    }
+      },
+    },
   },
   tableCard: {
     padding: "1.5rem",
-    minHeight: "44px"
+    minHeight: "44px",
   },
   tableContainer: {
     borderTopRightRadius: "0px",
     borderTopLeftRadius: "0px",
   },
-}
+};
 
 type NavigatorTableContainerProps = {
   buttons?: ReactElement[];
   children: ReactElement;
   instructions?: string;
-}
+};
 
-const NavigatorTableContainer = ({buttons, children, instructions}:NavigatorTableContainerProps) => {
-  
+const NavigatorTableContainer = ({
+  buttons,
+  children,
+  instructions,
+}: NavigatorTableContainerProps) => {
   return (
     <>
       <Card sx={styles.tableCard}>
-        <Box sx={styles.buttons}>
-          {buttons.map((b) => b )} 
-        </Box>
-        <Typography component="p" sx={{paddingLeft: "8px"}}>
+        <Box sx={styles.buttons}>{buttons.map((b) => b)}</Box>
+        <Typography component="p" sx={{ paddingLeft: "8px" }}>
           {instructions}
         </Typography>
       </Card>
@@ -57,7 +52,7 @@ const NavigatorTableContainer = ({buttons, children, instructions}:NavigatorTabl
         {children}
       </TableContainer>
     </>
-  )
-}
+  );
+};
 
-export default NavigatorTableContainer
+export default NavigatorTableContainer;
