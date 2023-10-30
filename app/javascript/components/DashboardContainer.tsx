@@ -11,11 +11,17 @@ const styles = {
   },
   container: {
     padding: "8rem",
+    ["@media (max-width:780px)"]: {
+      padding: "1.5rem"
+    }
   },
   data: {
     background: "#F2F5F7",
     padding: "2rem",
     borderRadius: "1rem",
+    ["@media (max-width:780px)"]: {
+      padding: "1rem"
+    }
   },
   link: {
     color: "#64447C",
